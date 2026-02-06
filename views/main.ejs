@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>I'm Bored</title>
+</head>
+
+<body>
+    <div class="box-md">
+        <h1>Let's find something for you to do : )</h1>
+        <form action="/" method="POST">
+            <select class="dropdown" name="activityType" id="">
+            <option value="random">Random type</option>
+            <option value="education">Education</option>
+            <option value="charity">Charity</option>
+            <option value="recreational">Recreational</option>
+            <option value="busywork">Busywork</option>
+            <option value="social">Social</option>
+            <option value="diy">DIY</option>
+            <option value="music">Music</option>
+
+            
+        </select>
+            <select class="dropdown" name="count" id="">
+            <option value="0">Any number of people</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+            <input type="submit" value="Go">
+        </form>
+        <div class="card">
+            <% if(locals.error) { %>
+                <h2 class="error">
+                    <%= error %>
+                </h2>
+                <% } %>
+
+                    <% if(locals.activity) { %>
+                        <h2 class="activity">
+                            <%= activity %>
+                        </h2>
+                        <div class="details">
+                            <span><%= type %></span>
+                            <span>participants: <%= participants %></span>
+                        </div>
+                        <% }  else { %>
+                            <h2 class="activity">Generate an activity with the above button</h2>
+                            <% } %>
+
+        </div>
+    </div>
+</body>
+
+</html>
