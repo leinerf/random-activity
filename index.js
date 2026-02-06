@@ -11,7 +11,7 @@ const port = 3000;
 const app = express();
 
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.render("main.ejs");
@@ -43,8 +43,8 @@ app.post('/', async(req, res) => {
             participants: data.participants
         });
     } catch (error) {
-        console.error(error);
-        res.render("main.ejs", { error: "Something went wrong" });
+        console.log(error.response.data);
+        res.render("main.ejs", { error: error.response.data });
     }
 })
 
